@@ -1,0 +1,7 @@
+services:
+  api-solid-pg:
+    image: bitnami/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=251410
+    ports:
+      - 3306:3306
