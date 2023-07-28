@@ -1,5 +1,6 @@
-import { logins } from "@prisma/client";
+import { Prisma, logins } from "@prisma/client";
 
 export interface InterfaceLoginRepository {
-  create(email:string, password:string): Promise<logins>;
+  create(data: Prisma.loginsUncheckedCreateInput): Promise<logins> | logins;
+  findByEmail(email: string): Promise<logins | null> | logins | null;
 }
