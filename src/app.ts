@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
-import { LoginsRoutes } from "./http/routes/logins.routes";
 import { LoginsFindRoutes } from "./http/routes/login/logins.find.routes";
+import { LoginsCreateRoutes } from "./http/routes/login/logins.create.routes";
 
 export const app = express();
 
@@ -14,5 +14,5 @@ app.use(
 	})
 );
 
-LoginsRoutes(app);
+LoginsCreateRoutes(app);
 LoginsFindRoutes(app)
