@@ -1,6 +1,6 @@
-import { QueryError } from "../../enums/enums-prisma-errors";
-import { UniqueLoginsCreateError } from "../../errors/prisma/unique-logins-create.error";
-import { InterfaceLoginRepository } from "../../repository/interfaces/interface-login.repository";
+import { QueryError } from "../../../enums/enums-prisma-errors";
+import { UniqueLoginsCreateError } from "../../../errors/prisma/unique-logins-create.error";
+import { InterfaceLoginRepository } from "../../../repository/interfaces/interface-login.repository";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import bcrypt from "bcrypt";
 
