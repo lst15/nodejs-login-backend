@@ -1,5 +1,5 @@
 import { PrismaPermissionsRepository } from "src/repository/implementations/prisma/prisma-permissions.repository";
-import { PermissionsDeleteByNameUseCase } from "src/use-cases/permissions/delete/permissions-delete-by-uuid.usecase";
+import { PermissionsDeleteByNameUseCase } from "src/use-cases/permissions/delete/permissions-delete-by-name.usecase";
 
 function PermissionsDeleteByNameFactory(){
   const repository = new PrismaPermissionsRepository();

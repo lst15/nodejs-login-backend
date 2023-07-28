@@ -1,7 +1,11 @@
 import express from "express";
 import cors from "cors";
-import { LoginsFindRoutes } from "./http/routes/login/logins.find.routes";
-import { LoginsCreateRoutes } from "./http/routes/login/logins.create.routes";
+import { LoginsFindRoutes } from "./http/routes/logins/logins.find.routes";
+import { LoginsCreateRoutes } from "./http/routes/logins/logins.create.routes";
+import { PermissionsCreateRoutes } from "./http/routes/permissions/permissions.create.routes";
+import { PermissionsFindRoutes } from "./http/routes/permissions/permissions.find.routes";
+import { PermissionsDeleteRoutes } from "./http/routes/permissions/permissions.delete.routes";
+import { PermissionsUpdateRoutes } from "./http/routes/permissions/permissions.update.routes";
 
 export const app = express();
 
@@ -16,3 +20,8 @@ app.use(
 
 LoginsCreateRoutes(app);
 LoginsFindRoutes(app)
+
+PermissionsCreateRoutes(app)
+PermissionsFindRoutes(app)
+PermissionsDeleteRoutes(app)
+PermissionsUpdateRoutes(app)
