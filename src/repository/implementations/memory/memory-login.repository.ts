@@ -5,6 +5,10 @@ import { uuid } from 'uuidv4';
 
 class MemoryLoginRepository implements InterfaceLoginRepository {
   private logins:logins[] = [];
+  
+  findByUuId(uuid: string): logins | null {
+    throw new Error("Method not implemented.");
+  }  
 
   findByEmail(email: string): logins | null {
     const login = this.logins.find(login => login.email === email);
