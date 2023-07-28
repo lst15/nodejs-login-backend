@@ -1,3 +1,4 @@
+import HttpStatusCode from "@enums/enums-status-http-code";
 import { NextFunction,Request,Response } from "express";
 import {z} from "zod";
 
@@ -12,7 +13,7 @@ function MiddlewareLoginsCreateDto(){
     try { 
       body_schema.parse(req.body)
     } catch (error:any) {
-      return res.status(400).json({error: error.format()})
+      return res.status(HttpStatusCode.CONFLICT).json({error: error.format()})
     }
     
     return next();

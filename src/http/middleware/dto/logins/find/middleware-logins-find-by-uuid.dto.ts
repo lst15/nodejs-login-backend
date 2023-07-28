@@ -9,7 +9,7 @@ function MiddlewareLoginsFindByUuidDto(){
     })
 
     try { 
-      body_schema.parse(req.query)
+      body_schema.parse(req.params)
     } catch (error:any) {
       return res.status(400).json({error: error.format()})
     }
