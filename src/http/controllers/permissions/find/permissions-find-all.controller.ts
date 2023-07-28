@@ -6,7 +6,7 @@ const PermissionsFindAllController = async (req:Request,res:Response) => {
   const factory = PermissionsFindAllFactory()
   const permissions = await factory.execute()
 
-  return res.json(HttpStatusCode.FOUND).json(permissions);
+  return res.status(HttpStatusCode.FOUND).json(permissions);
 }
 
 export { PermissionsFindAllController }
