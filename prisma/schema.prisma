@@ -23,3 +23,10 @@ model logins {
   @@unique([uuid])
 }
 
+model permissions {
+  uuid String @id @default(uuid())
+  name String @db.VarChar(20)
+
+  @@map("Permission")
+  @@unique([name])
+}
