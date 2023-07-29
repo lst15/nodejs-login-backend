@@ -1,4 +1,6 @@
+import { QueryError } from "@enums/enums-prisma-errors"
 import HttpStatusCode from "@enums/enums-status-http-code"
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library"
 import { Request,Response } from "express"
 import { PermissionsUpdateByNameFactory } from "src/factory/permissions/update/permissions-update-by-name.factory"
 
@@ -11,7 +13,10 @@ const PermissionsUpdateByNameController = async (req:Request,res:Response) => {
     const result = await factory.execute({oldname, newname})
     return res.status(HttpStatusCode.ACCEPTED).json(result); 
   } catch (error) {
-    return res.status(HttpStatusCode.CONFLICT).json()
+    if(error instanceof PrismaClientKnownRequestError && error.code == QueryError.RecordsNotFound){
+      return res.status(HttpStatusCode.NOT_FOUND).json({message: error.message})
+    }
+    
   }  
   
 }
