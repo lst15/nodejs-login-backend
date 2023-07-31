@@ -6,5 +6,5 @@ export interface InterfaceLoginRepository {
   updatePassword(email:string, newpassword:string): Promise<logins> | logins[] | logins | null;
   deleteByEmail(email:string):any;
   findByEmail(email: string): Promise<logins | null> | logins | null;
-  findByUuId(uuid: string): Promise<logins | null> | logins | null;
+  findByUuId(uuid: string): Promise<logins | null> | logins | null;  
 }
