@@ -3,19 +3,19 @@ import { InterfaceLoginHasPermissionRepository } from "src/repository/interfaces
 import { InterfaceLoginRepository } from "src/repository/interfaces/interface-login.repository";
 import { InterfacePermissionRepository } from "src/repository/interfaces/interface-permission.repository";
 
-interface DelegateLoginHasPermissionsUseCaseRequest {
+interface FindLoginHasPermissionsUseCaseRequest {
   email: string;
   permission: string;
 }
 
-class DelegateLoginHasPermissionUseCase {
+class FindLoginHasPermissionUseCase {
   constructor(
     private loginHasPermissionRepository: InterfaceLoginHasPermissionRepository,
     private loginRepository: InterfaceLoginRepository,
     private permissionRepository: InterfacePermissionRepository
   ) { }
 
-  async execute({ email, permission }: DelegateLoginHasPermissionsUseCaseRequest) {
+  async execute({ email, permission }: FindLoginHasPermissionsUseCaseRequest) {
     const userExists = await this.loginRepository.findByEmail(email);
 
     if (!userExists) {
@@ -41,4 +41,4 @@ class DelegateLoginHasPermissionUseCase {
   }
 }
 
-export { DelegateLoginHasPermissionUseCase };
+export { FindLoginHasPermissionUseCase };

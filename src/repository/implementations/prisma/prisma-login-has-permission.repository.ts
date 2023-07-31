@@ -2,7 +2,7 @@ import { Prisma, loginsHasPermissions } from "@prisma/client";
 import { prisma } from "src/lib/prisma.lib";
 import { InterfaceLoginHasPermissionRepository } from "src/repository/interfaces/interface-login-has-permission.repository";
 
-class PrismaLoginHasPermission
+class PrismaLoginHasPermissionRepository 
   implements InterfaceLoginHasPermissionRepository
 {
   async loginHasPermission(
@@ -47,7 +47,7 @@ class PrismaLoginHasPermission
   }
 
   async removeAllLoginsByPermission(uuid_permission: string): Promise<any> {
-    return prisma.loginsHasPermissions.deleteMany({
+    return await prisma.loginsHasPermissions.deleteMany({
       where: {
         uuid_permission: uuid_permission,
       },
@@ -55,15 +55,15 @@ class PrismaLoginHasPermission
   }
 
   async getAllPermissionsByLogin(uuid_login: string): Promise<loginsHasPermissions[]> {
-    return prisma.loginsHasPermissions.findMany({
+    return await prisma.loginsHasPermissions.findMany({
       where: {
         uuid_login: uuid_login,
       },
     });
   }
 
-  getAllLoginsByPermission(uuid_permission: string): Promise<loginsHasPermissions[]> {
-    return prisma.loginsHasPermissions.findMany({
+  async getAllLoginsByPermission(uuid_permission: string): Promise<loginsHasPermissions[]> {
+    return await prisma.loginsHasPermissions.findMany({
       where: {
         uuid_permission: uuid_permission,
       },
@@ -71,4 +71,4 @@ class PrismaLoginHasPermission
   }
 }
 
-export { PrismaLoginHasPermission };
+export { PrismaLoginHasPermissionRepository };
