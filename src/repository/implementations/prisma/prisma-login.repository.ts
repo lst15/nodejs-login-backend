@@ -32,7 +32,8 @@ class PrismaLoginRepository implements InterfaceLoginRepository {
     return await prisma.logins.delete({
       where: {
         email: email
-      }
+      },
+      include:{permissions:true}
     });
   }
 
