@@ -7,7 +7,7 @@ class PrismaLoginRepository implements InterfaceLoginRepository {
   async findByUuId(uuid: string): Promise<logins | null> {    
     return await prisma.logins.findUnique({
       where: {
-        uuid: "08553e3d-404b-40dc-af43-4030ccd67696"
+        uuid: uuid
       }
     });
   }

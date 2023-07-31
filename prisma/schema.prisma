@@ -17,7 +17,9 @@ model logins {
   password String @db.VarChar(150)
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
-  
+
+  permissions loginsHasPermissions[] @relation("fk_login")
+
   @@map("Login")
   @@unique([email])
   @@unique([uuid])
@@ -26,7 +28,24 @@ model logins {
 model permissions {
   uuid String @id @default(uuid())
   name String @db.VarChar(20)
+  createdAt DateTime @default(now())
 
+  delegates loginsHasPermissions[] @relation("fk_permissions")
+  
   @@map("Permission")
   @@unique([name])
+}
+
+model loginsHasPermissions {
+  uuid String @id @default(uuid())
+  
+  login logins @relation("fk_login",fields: [uuid_login],references: [uuid])
+  uuid_login String
+
+  permission permissions @relation("fk_permissions",fields: [uuid_permission],references: [uuid])
+  uuid_permission String
+
+  createdAt DateTime @default(now())
+  
+  @@map("Login_has_Permission")
 }
