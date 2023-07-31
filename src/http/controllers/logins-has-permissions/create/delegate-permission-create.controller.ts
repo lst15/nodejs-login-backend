@@ -14,3 +14,5 @@ const DelegatePermissionCreateController = async (req:Request,res:Response) => {
   }
 
 }
+
+export {DelegatePermissionCreateController};
