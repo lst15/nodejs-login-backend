@@ -11,7 +11,7 @@ export const LoginsCreateController = async (req: Request, res: Response) => {
 
   try {
     await factory.execute({ email, password });
-    return res.status(HttpStatusCode.CREATED).json();
+    return res.status(HttpStatusCode.CREATED).json({message:"Account was created with success"});
   } catch (error) {
     if (
       error instanceof PrismaClientKnownRequestError &&

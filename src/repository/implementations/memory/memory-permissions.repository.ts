@@ -5,15 +5,16 @@ import { uuid } from "uuidv4";
 
 class MemoryPermissionsRepository implements InterfacePermissionRepository {
   private permissions:permissions[] = [
-    {name:"login_user",uuid:"abc-def-ghi"},
-    {name:"register_user",uuid:"jkl-mno-pqr"},
-    {name:"delete_user",uuid:"stu-vwx-yz0"}
+    {name:"login_user",uuid:"abc-def-ghi",createdAt:new Date()},
+    {name:"register_user",uuid:"jkl-mno-pqr",createdAt:new Date()},
+    {name:"delete_user",uuid:"stu-vwx-yz0",createdAt:new Date()},    
   ];
   
   create(name: string): permissions {
     const permission:permissions = {
       name: name,
-      uuid: uuid()
+      uuid: uuid(),
+      createdAt:new Date()
     }
 
     this.permissions.push(permission);

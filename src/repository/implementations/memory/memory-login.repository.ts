@@ -4,29 +4,54 @@ import { Prisma, logins } from "@prisma/client";
 import { uuid } from "uuidv4";
 
 class MemoryLoginRepository implements InterfaceLoginRepository {
-  private logins: logins[] = [
-    {
-      uuid: "abc-def-ghi",
-      email: "user1@example.com",
-      password: "<PASSWORD>",
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
-      uuid: "jkl-mno-pqr",
-      email: "user2@example.com",
-      password: "<PASSWORD>",
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
-      uuid: "stu-vwx-yz0",
-      email: "user2@example.com",
-      password: "<PASSWORD>",
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-  ];
+
+  updateEmail(email: string, newemail: string): logins[] | null {
+    const login = this.logins.find(login => login.email === email);
+
+    if(!login){
+      return null;
+    }
+
+    this.logins.map((login:logins) => {
+      if(login.email === email) {
+        login.email = newemail;
+      }
+    })
+
+    return this.logins;
+  }
+
+  updatePassword(email: string, newpassword: string): logins[] | null{
+    const login = this.logins.find(login => login.email === email);
+
+    if(!login){
+      return null;
+    }
+
+    this.logins.map((login:logins) => {
+      if(login.email === email) {
+        login.password = newpassword;
+      }
+    })
+
+    return this.logins;
+  }
+
+  deleteByEmail(email: string) {
+    const login = this.logins.find(
+      (login) => login.email === email
+    );
+
+    if (!login) {
+      return null;
+    }
+
+    const data_modified = this.logins.filter(
+      (login: logins) => login.email !== email
+    );
+
+    return data_modified;
+  }
 
   findByUuId(uuid: string): logins | null {
     const login = this.logins.find((login) => login.uuid === uuid);
@@ -60,6 +85,30 @@ class MemoryLoginRepository implements InterfaceLoginRepository {
     this.logins.push(login);
     return login;
   }
+
+  private logins: logins[] = [
+    {
+      uuid: "abc-def-ghi",
+      email: "user1@example.com",
+      password: "<PASSWORD>",
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      uuid: "jkl-mno-pqr",
+      email: "user2@example.com",
+      password: "<PASSWORD>",
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      uuid: "stu-vwx-yz0",
+      email: "user2@example.com",
+      password: "<PASSWORD>",
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+  ];  
 }
 
 export { MemoryLoginRepository };

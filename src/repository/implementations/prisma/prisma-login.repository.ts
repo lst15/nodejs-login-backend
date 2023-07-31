@@ -1,10 +1,41 @@
 import { InterfaceLoginRepository } from "../../interfaces/interface-login.repository";
 import { prisma } from "../../../lib/prisma.lib";
 import { Prisma, logins } from "@prisma/client";
+import { GetResult } from "@prisma/client/runtime/library";
 
 class PrismaLoginRepository implements InterfaceLoginRepository {
 
-  async findByUuId(uuid: string): Promise<logins | null> {    
+  async updateEmail(email: string, newemail: string): Promise<logins> {
+    return await prisma.logins.update({
+      where: {
+        email: email
+      },
+      data: {
+        email: newemail
+      }
+    })
+  }
+
+  async updatePassword(email: string, newpassword: string): Promise<logins> {
+    return await prisma.logins.update({
+      where: {
+        email: email
+      },
+      data: {
+        password: newpassword
+      }
+    })
+  }
+
+  async deleteByEmail(email: string) {
+    return await prisma.logins.delete({
+      where: {
+        email: email
+      }
+    });
+  }
+
+  async findByUuId(uuid: string): Promise<logins | null> {
     return await prisma.logins.findUnique({
       where: {
         uuid: uuid
@@ -17,16 +48,16 @@ class PrismaLoginRepository implements InterfaceLoginRepository {
       where: {
         email: email
       }
-    })    
+    })
   }
 
   async create(data: Prisma.loginsUncheckedCreateInput): Promise<logins> {
     return await prisma.logins.create({
       data: {
-        email:data.email,
-        password:data.password
-      },      
-    })    
+        email: data.email,
+        password: data.password
+      },
+    })
   }
 
 }
