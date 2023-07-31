@@ -4,8 +4,7 @@ import { PrismaPermissionsRepository } from "src/repository/implementations/pris
 import { RemoveAllPermissionsByLoginDeleteUseCase } from "src/use-cases/logins-has-permissions/delete/remove-all-permissions-by-login-delete.usecase";
 
 function RemoveAllPermissionsByLoginDeleteFactory(){
-  const repositoryLoginHasPermission = new PrismaLoginHasPermissionRepository();
-  const repositoryPermission = new PrismaPermissionsRepository();
+  const repositoryLoginHasPermission = new PrismaLoginHasPermissionRepository();  
   const repositoryLogin = new PrismaLoginRepository();
 
   const usecase = new RemoveAllPermissionsByLoginDeleteUseCase(
