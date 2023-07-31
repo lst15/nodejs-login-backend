@@ -1,7 +1,7 @@
 import {expect, it, describe, beforeEach} from "vitest";
-import { MemoryLoginRepository } from "../../repository/implementations/memory/memory-login.repository";
-import { LoginsCreateUseCase } from "./create/logins-create.usecase";
-import { UniqueLoginsCreateError } from "../../errors/prisma/unique-logins-create.error";
+import { MemoryLoginRepository } from "../../../repository/implementations/memory/memory-login.repository";
+import { LoginsCreateUseCase } from "./logins-create.usecase";
+import { UniqueLoginsCreateError } from "../../../errors/prisma/unique-logins-create.error";
 
 let repository: MemoryLoginRepository;
 let sut:LoginsCreateUseCase;
@@ -36,4 +36,5 @@ describe("Logins use case", () => {
       password: password,
     })).rejects.toBeInstanceOf(UniqueLoginsCreateError);
   })
+  
 })
