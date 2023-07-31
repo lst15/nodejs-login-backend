@@ -1,7 +1,6 @@
 import { InterfaceLoginRepository } from "../../interfaces/interface-login.repository";
 import { prisma } from "../../../lib/prisma.lib";
 import { Prisma, logins } from "@prisma/client";
-import { GetResult } from "@prisma/client/runtime/library";
 
 class PrismaLoginRepository implements InterfaceLoginRepository {
 
@@ -11,7 +10,8 @@ class PrismaLoginRepository implements InterfaceLoginRepository {
         email: email
       },
       data: {
-        email: newemail
+        email: newemail,
+        updatedAt: Date()
       }
     })
   }
@@ -22,7 +22,8 @@ class PrismaLoginRepository implements InterfaceLoginRepository {
         email: email
       },
       data: {
-        password: newpassword
+        password: newpassword,
+        updatedAt: Date()
       }
     })
   }
