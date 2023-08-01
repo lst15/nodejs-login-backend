@@ -3,12 +3,12 @@ import { Request, Response } from "express";
 import { RemoveAllLoginsByPermissionDeleteFactory } from "src/factory/logins-has-permissions/delete/remove-all-logins-by-permission-delete.factory";
 
 const RemoveAllLoginsByPermissionsDeleteController = async (req:Request,res:Response) => {
-  const {permission} = req.body;
+  const {permission_name} = req.body;
 
   const factory = RemoveAllLoginsByPermissionDeleteFactory()
 
   try {
-    const result = await factory.execute({permission});
+    const result = await factory.execute({permission:permission_name});
     return res.status(HttpStatusCode.OK).json(result);
   } catch (error:any) {
     return res.status(HttpStatusCode.NOT_FOUND).json({message: error.message});

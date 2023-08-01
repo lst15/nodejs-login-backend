@@ -28,11 +28,21 @@ class RemovePermissionDeleteUseCase {
       throw new RecordNotFound("permission");
     }
 
-    return await this.loginHasPermissionRepository.removePermission({
+    const permissions = await this.loginHasPermissionRepository.loginHasPermission({
+      uuid_login:userExists.uuid,
+      uuid_permission:permissionExists.uuid
+    })
+
+    if(!permissions) {
+      throw new RecordNotFound("permissions");
+    }
+
+    await this.loginHasPermissionRepository.removePermission({
       uuid_login: userExists.uuid,
       uuid_permission: permissionExists.uuid
     })
 
+    return permissions;
   }
 }
 
