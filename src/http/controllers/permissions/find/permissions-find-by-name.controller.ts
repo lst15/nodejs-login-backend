@@ -6,12 +6,12 @@ const PermissionsFindByNameController = async (req:Request,res:Response) => {
   const { name } = req.params;
 
   const factory = PermissiondFindByNameFactory();
-  const result = await factory.execute({name});
 
-  if(result){
-    return res.status(HttpStatusCode.FOUND).json(result);
-  } else {
-    return res.status(HttpStatusCode.NOT_FOUND).json();
+  try {
+    const result = await factory.execute({name});
+    return res.status(HttpStatusCode.OK).json(result);
+  } catch (error:any) {
+    return res.status(HttpStatusCode.NOT_FOUND).json({message: error.message});
   }
 
 }

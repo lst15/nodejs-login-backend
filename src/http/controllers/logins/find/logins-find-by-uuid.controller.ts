@@ -6,17 +6,15 @@ import { Request, Response } from "express";
 import { string } from "zod";
 
 const LoginsFindByUuidController = async (req:Request, res:Response) => {
-  const { uuid } = req.query as any;
+  const { uuid } = req.params;
   
   const factory = LoginsFindByUuidFactory();
 
   try {
     const result = await factory.execute({ uuid });
-    return res.status(HttpStatusCode.FOUND).json(result);    
-  } catch (error) {
-    if(error instanceof PrismaClientKnownRequestError && error.code == QueryError.RecordsNotFound){
-      return res.status(HttpStatusCode.NOT_FOUND).json();
-    }
+    return res.status(HttpStatusCode.OK).json(result);    
+  } catch (error:any) {
+    return res.status(HttpStatusCode.NOT_FOUND).json({error:error.message});
   }
 
 }

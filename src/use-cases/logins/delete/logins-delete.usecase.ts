@@ -12,7 +12,7 @@ class LoginsDeleteUseCase {
     const userExists = await this.loginsRepository.findByEmail(email);
 
     if(!userExists){
-      throw new RecordNotFound(email)
+      throw new RecordNotFound("email")
     }
 
     return await this.loginsRepository.deleteByEmail(email);

@@ -2,7 +2,7 @@ import { InterfaceLoginRepository } from "../../interfaces/interface-login.repos
 import { prisma } from "../../../lib/prisma.lib";
 import { Prisma, logins } from "@prisma/client";
 
-class PrismaLoginRepository implements InterfaceLoginRepository {
+class   PrismaLoginRepository implements InterfaceLoginRepository {
 
   async updateEmail(email: string, newemail: string): Promise<logins> {
     return await prisma.logins.update({
@@ -11,7 +11,7 @@ class PrismaLoginRepository implements InterfaceLoginRepository {
       },
       data: {
         email: newemail,
-        updatedAt: Date()
+        updatedAt: new Date()
       }
     })
   }
@@ -23,7 +23,7 @@ class PrismaLoginRepository implements InterfaceLoginRepository {
       },
       data: {
         password: newpassword,
-        updatedAt: Date()
+        updatedAt: new Date()
       }
     })
   }
@@ -46,6 +46,7 @@ class PrismaLoginRepository implements InterfaceLoginRepository {
   }
 
   async findByEmail(email: string): Promise<logins | null> {
+    console.log(email,"cafe")
     return await prisma.logins.findUnique({
       where: {
         email: email

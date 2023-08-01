@@ -10,8 +10,7 @@ function FindAllLoginsByPermissionFactory(){
 
   const usecase = new FindAllLoginsByPermissionUseCase(
     repositoryLoginHasPermission,
-    repositoryLogin,
-    repositoryPermission
+    repositoryPermission    
   )
 
   return usecase;

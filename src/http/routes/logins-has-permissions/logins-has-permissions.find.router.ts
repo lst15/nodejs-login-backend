@@ -4,9 +4,9 @@ import { FindAllPermissionsByLogin } from "src/http/controllers/logins-has-permi
 import { FindLoginHasPermissionController } from "src/http/controllers/logins-has-permissions/find/find-login-has-permission.controller";
 
 function LoginsHasPermissionsFindRouter(app:Express) {
-  app.get('/logins/permissions/email/:email',FindAllPermissionsByLogin);
-  app.get('logins/permissions/name/:permission',FindAllLoginsByPermissionsController);
-  app.post('/logins/permissions/check_user',FindLoginHasPermissionController)
+  app.get('/login/permissions/email/:email',FindAllPermissionsByLogin);
+  app.get('/login/permissions/name/:name',FindAllLoginsByPermissionsController);
+  app.post('/login/permissions/check_user',FindLoginHasPermissionController)
 }
 
 export { LoginsHasPermissionsFindRouter };

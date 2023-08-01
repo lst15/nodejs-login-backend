@@ -1,3 +1,4 @@
+import HttpStatusCode from "@enums/enums-status-http-code";
 import { LoginsEmailUpdateFactory } from "@logins-factory/update/logins-email-update.factory";
 import { Request, Response } from "express";
 
@@ -7,10 +8,10 @@ const LoginsEmailUpdateController = async (req:Request,res:Response) => {
   const factory = LoginsEmailUpdateFactory();
 
   try {
-    await factory.execute({email,newemail})
-    return res.status(200).json({message: "Email changed with success!"});
+    const result = await factory.execute({email,newemail})
+    return res.status(HttpStatusCode.OK).json(result);
   } catch (error:any) {
-    return res.status(400).json({message: error.message});    
+    return res.status(HttpStatusCode.NOT_FOUND).json({message: error.message});    
   }
 
 }

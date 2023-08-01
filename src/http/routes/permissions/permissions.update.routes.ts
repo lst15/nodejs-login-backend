@@ -3,7 +3,7 @@ import { PermissionsUpdateByNameController } from "src/http/controllers/permissi
 import { MiddlewarePermissionsUpdateByNameDto } from "src/http/middleware/dto/permissions/update/middleware-permissions-update-by-name.dto";
 
 function PermissionsUpdateRoutes(app:Express){
-  app.post("/permissions/update",MiddlewarePermissionsUpdateByNameDto(),PermissionsUpdateByNameController);
+  app.put("/permissions",PermissionsUpdateByNameController);
 }
 
 export {PermissionsUpdateRoutes};

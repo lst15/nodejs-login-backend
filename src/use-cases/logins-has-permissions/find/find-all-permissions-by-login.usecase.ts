@@ -18,7 +18,7 @@ class FindAllPermissionsFindByLoginUseCase {
     const userExists = await this.loginRepository.findByEmail(email);
 
     if (!userExists) {
-      throw new RecordNotFound(email);
+      throw new RecordNotFound("email");
     }
     
     return await this.loginHasPermissionRepository.getAllPermissionsByLogin(userExists.uuid);

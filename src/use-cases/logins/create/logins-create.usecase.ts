@@ -20,12 +20,11 @@ class LoginsCreateUseCase {
 
     const bcryptPassword = await bcrypt.hash(password, 10);
 
-    const executed = await this.loginsRepository.create({
+    return await this.loginsRepository.create({
       email:email,
       password:bcryptPassword
     })
-
-    return executed;
+    
   }
 }
 

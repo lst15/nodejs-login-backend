@@ -8,10 +8,10 @@ const PermissionsCreateController = async (req:Request, res:Response) => {
   const factory = PermissionsCreateFactory();
 
   try {
-    await factory.execute({ name });
-    return res.status(HttpStatusCode.CREATED).json(); 
+    const result = await factory.execute({ name });
+    return res.status(HttpStatusCode.OK).json(result);
   } catch (error) {
-    return res.status(HttpStatusCode.CONFLICT).json(error)
+    return res.status(HttpStatusCode.CONFLICT).json({message:"permission already exists!"})  
   }
 }
 

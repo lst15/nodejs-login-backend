@@ -15,7 +15,7 @@ class LoginsPasswordUpdateUseCase {
     const userExists = await this.loginsRepository.findByEmail(email);
 
     if(!userExists){
-      throw new RecordNotFound(email)
+      throw new RecordNotFound("email")
     }
 
     const bcryptPassword = await bcrypt.hash(newpassword, 10);

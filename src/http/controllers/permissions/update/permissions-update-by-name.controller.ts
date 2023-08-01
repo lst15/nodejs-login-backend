@@ -11,12 +11,9 @@ const PermissionsUpdateByNameController = async (req:Request,res:Response) => {
 
   try {
     const result = await factory.execute({oldname, newname})
-    return res.status(HttpStatusCode.ACCEPTED).json(result); 
-  } catch (error) {
-    if(error instanceof PrismaClientKnownRequestError && error.code == QueryError.RecordsNotFound){
-      return res.status(HttpStatusCode.NOT_FOUND).json({message: error.message})
-    }
-    
+    return res.status(HttpStatusCode.OK).json(result);
+  } catch (error:any) {    
+    return res.status(HttpStatusCode.NOT_FOUND).json({message: error.message})
   }  
   
 }

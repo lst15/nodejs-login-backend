@@ -11,6 +11,11 @@ class LoginsFindByUuidUseCase {
 
   async execute({ uuid }: LoginsFindByUuidUseCaseRequest): Promise<logins | null> {    
     const login = await this.loginsRepository.findByUuId(uuid);
+
+    if(!login){
+      throw new RecordNotFound('login');
+    }
+
     return login;
   }
 }

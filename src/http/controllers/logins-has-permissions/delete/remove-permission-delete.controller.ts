@@ -1,3 +1,4 @@
+import HttpStatusCode from "@enums/enums-status-http-code";
 import { Request, Response } from "express";
 import { RemovePermissionDeleteFactory } from "src/factory/logins-has-permissions/delete/remove-permission-delete.factory";
 
@@ -7,10 +8,10 @@ const RemovePermissionDeleteController = async (req:Request, res:Response) => {
   const factory = RemovePermissionDeleteFactory();
 
   try {
-    await factory.execute({email:email,permission:permission})
-    return res.status(200).json({message: "Remove Permission Success"})
-  } catch (error) {
-    return res.status(400).json();
+    const result = await factory.execute({email:email,permission:permission})
+    return res.status(HttpStatusCode.OK).json(result)
+  } catch (error:any) {
+    return res.status(HttpStatusCode.NOT_FOUND).json({message: error.message});
   }
 }
 

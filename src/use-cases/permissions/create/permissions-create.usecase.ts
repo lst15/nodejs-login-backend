@@ -11,7 +11,7 @@ class PermissionsCreateUseCase {
     const exists = await this.permissionsRepository.findByName(name);
 
     if (exists) {
-      throw new UniqueLoginsCreateError("name")
+      throw new UniqueLoginsCreateError(name)
     }
 
     return await this.permissionsRepository.create(name);

@@ -20,13 +20,13 @@ class DelegatePermissionUseCase {
     const userExists = await this.loginRepository.findByEmail(email);
 
     if (!userExists) {
-      throw new RecordNotFound(email);
+      throw new RecordNotFound("email");
     }
 
     const permissionExists = await this.permissionRepository.findByName(permission);
 
     if (!permissionExists) {
-      throw new RecordNotFound(permission);
+      throw new RecordNotFound("permission");
     }
 
     return await this.loginHasPermissionRepository.delegatePermission({

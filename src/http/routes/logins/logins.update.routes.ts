@@ -3,8 +3,8 @@ import { LoginsEmailUpdateController } from "src/http/controllers/logins/update/
 import { LoginsPasswordUpdateController } from "src/http/controllers/logins/update/logins-password-update.controller";
 
 function LoginsUpdateRoutes(app:Express) {
-  app.put('/logins/password',LoginsPasswordUpdateController);
-  app.put('/logins/email',LoginsEmailUpdateController)
+  app.put('/login/password',LoginsPasswordUpdateController);
+  app.put('/login/email',LoginsEmailUpdateController)
 }
 
 export { LoginsUpdateRoutes }

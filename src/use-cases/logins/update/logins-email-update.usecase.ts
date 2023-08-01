@@ -12,8 +12,8 @@ class LoginsEmailUpdateUseCase {
   async execute({email,newemail}: LoginsEmailUpdateUseCaseRequest) {
     const userExists = await this.loginsRepository.findByEmail(email);
 
-    if(userExists){
-      throw new RecordNotFound(email);
+    if(!userExists){
+      throw new RecordNotFound("email");
     }
 
     return await this.loginsRepository.updateEmail(email,newemail);

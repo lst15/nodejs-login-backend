@@ -4,9 +4,14 @@ import { PermissionsFindAllFactory } from "src/factory/permissions/find/permissi
 
 const PermissionsFindAllController = async (req:Request,res:Response) => {
   const factory = PermissionsFindAllFactory()
-  const permissions = await factory.execute()
 
-  return res.status(HttpStatusCode.FOUND).json(permissions);
+  try {
+    const result = await factory.execute();
+    return res.status(HttpStatusCode.OK).json(result);
+  } catch (error:any) {
+    return res.status(HttpStatusCode.CONFLICT).json(error);
+  }
+
 }
 
 export { PermissionsFindAllController }

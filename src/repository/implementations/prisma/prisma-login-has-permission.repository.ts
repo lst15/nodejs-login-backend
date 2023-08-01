@@ -59,6 +59,7 @@ class PrismaLoginHasPermissionRepository
       where: {
         uuid_login: uuid_login,
       },
+      include:{permission:true}
     });
   }
 
@@ -67,6 +68,7 @@ class PrismaLoginHasPermissionRepository
       where: {
         uuid_permission: uuid_permission,
       },
+      include:{login:{select:{uuid:true,email:true}}}
     });
   }
 }

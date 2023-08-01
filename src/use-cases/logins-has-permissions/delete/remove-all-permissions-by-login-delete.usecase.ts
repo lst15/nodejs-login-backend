@@ -15,9 +15,9 @@ class RemoveAllPermissionsByLoginDeleteUseCase {
 
   async execute({email}: RemoveAllPermissionByLoginDeleteUseCaseRequest): Promise<void> {
     const userExists = await this.loginRepository.findByEmail(email);
-
+    
     if (!userExists) {
-      throw new RecordNotFound(email);
+      throw new RecordNotFound("email");
     }
     
     return await this.loginHasPermissionRepository.removeAllPermissionsByLogin(userExists.uuid);

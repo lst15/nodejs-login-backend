@@ -10,13 +10,10 @@ const PermissionsDeleteByNameController = async (req:Request, res:Response) => {
   const factory = PermissionsDeleteByNameFactory();
 
   try {
-    await factory.execute({ name });
-    return res.status(HttpStatusCode.NO_CONTENT).json();
-  } catch (error) {
-    if(error instanceof PrismaClientKnownRequestError && error.code == QueryError.RecordsNotFound) {
-      return res.status(HttpStatusCode.CONFLICT).json({ error: error.message });
-    } 
-    
+    const result = await factory.execute({ name });
+    return res.status(HttpStatusCode.OK).json(result);
+  } catch (error:any) {
+    return res.status(HttpStatusCode.CONFLICT).json({ message: error.message });
   }
   
 }

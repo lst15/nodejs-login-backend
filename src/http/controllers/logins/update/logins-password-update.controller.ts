@@ -1,3 +1,4 @@
+import HttpStatusCode from "@enums/enums-status-http-code";
 import { LoginsPasswordUpdateFactory } from "@logins-factory/update/logins-password-update.factory";
 import { Request, Response } from "express";
 
@@ -8,9 +9,9 @@ const LoginsPasswordUpdateController = async (req:Request,res:Response) => {
 
   try {
     await factory.execute({email,newpassword});
-    return res.status(200).json({message: "Password changed successfully!"});
+    return res.status(HttpStatusCode.OK).json();
   } catch (error:any) {
-    return res.status(400).json({message: error.message});    
+    return res.status(HttpStatusCode.NOT_FOUND).json({message: error.message});    
   }
 
 }

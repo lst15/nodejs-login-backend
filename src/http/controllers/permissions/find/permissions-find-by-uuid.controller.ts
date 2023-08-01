@@ -6,12 +6,12 @@ const PermisionsFindByUuidController = async (req:Request,res:Response) => {
   const { uuid } = req.params;
 
   const factory = PermissionsFindByUuidFactory()
-  const permissions = await factory.execute({uuid});
 
-  if(permissions){
-    return res.status(HttpStatusCode.FOUND).json(permissions);
-  } else {
-    return res.status(HttpStatusCode.NOT_FOUND).json();
+  try {
+    const result = await factory.execute({uuid});
+    return res.status(HttpStatusCode.OK).json(result);
+  } catch (error:any) {
+    return res.status(HttpStatusCode.NOT_FOUND).json({message:error.message});
   }
 
 }

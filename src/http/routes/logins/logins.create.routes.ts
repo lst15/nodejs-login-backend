@@ -3,7 +3,7 @@ import { MiddlewareLoginsCreateDto } from "../../middleware/dto/logins/create/mi
 import { LoginsCreateController } from "../../controllers/logins/create/logins-create.controller";
 
 function LoginsCreateRoutes(app:Express){
-  app.post("/login/register",MiddlewareLoginsCreateDto(),LoginsCreateController);
+  app.post("/login",MiddlewareLoginsCreateDto(),LoginsCreateController);
 }
 
 export {LoginsCreateRoutes};

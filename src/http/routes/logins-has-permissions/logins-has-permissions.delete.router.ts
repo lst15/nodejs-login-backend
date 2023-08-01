@@ -5,7 +5,7 @@ import { RemovePermissionDeleteController } from "src/http/controllers/logins-ha
 
 function LoginsHasPermissionsDeleteRouter(app:Express){
   app.delete('/login/permissions',RemovePermissionDeleteController);
-  app.delete('login/permissions/email',RemoveAllPermissionsByLoginDeleteController);
+  app.delete('/login/permissions/email',RemoveAllPermissionsByLoginDeleteController);
   app.delete('/login/permissions/name',RemoveAllLoginsByPermissionsDeleteController);
 }
 
