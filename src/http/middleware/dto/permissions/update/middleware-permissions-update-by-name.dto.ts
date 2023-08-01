@@ -6,8 +6,8 @@ function MiddlewarePermissionsUpdateByNameDto(){
   return (req:Request,res:Response,next:NextFunction) => {
 
     const body_schema = z.object({
-      oldname: z.string().min(3).max(255),
-      newname: z.string().min(3).max(255),
+      permission_oldname: z.string().min(3).max(30),
+      permission_newname: z.string().min(3).max(30),
     })
 
     try {

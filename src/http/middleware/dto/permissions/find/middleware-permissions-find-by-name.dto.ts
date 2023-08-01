@@ -6,7 +6,7 @@ function MiddlewarePermissionsFindByNameDto(){
   return (req:Request, res:Response,next:NextFunction) => {
 
     const body_schema = z.object({
-      name:z.string().nonempty().min(4)
+      name:z.string().nonempty().min(4).max(30)
     })
 
     try {

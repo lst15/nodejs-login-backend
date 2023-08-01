@@ -5,8 +5,8 @@ import { LoginsFindByUuidController } from "src/http/controllers/logins/find/log
 import { MiddlewareLoginsFindByUuidDto } from "src/http/middleware/dto/logins/find/middleware-logins-find-by-uuid.dto";
 
 async function LoginsFindRoutes(app:Express) {
-  app.get("/login/email/:email",LoginsFindByEmailController);
-  app.get("/login/uuid/:uuid",LoginsFindByUuidController);
+  app.get("/login/email/:email",MiddlewareLoginsFindByEmailDto(),LoginsFindByEmailController);
+  app.get("/login/uuid/:uuid",MiddlewareLoginsFindByUuidDto(),LoginsFindByUuidController);
 }
 
 export {LoginsFindRoutes}

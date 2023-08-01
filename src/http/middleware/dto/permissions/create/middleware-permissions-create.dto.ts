@@ -5,7 +5,7 @@ import {z} from "zod";
 function MiddlewarePermissionsCreateDto(){
   return (req:Request,res:Response,next:NextFunction) => {
     const body_schema = z.object({
-      name:z.string().nonempty().min(4)
+      permission_name:z.string().nonempty().min(4).max(30)
     })
 
     try { 

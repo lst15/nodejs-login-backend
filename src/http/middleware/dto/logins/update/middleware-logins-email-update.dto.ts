@@ -2,21 +2,22 @@ import HttpStatusCode from "@enums/enums-status-http-code";
 import { NextFunction, Request, Response } from "express";
 import {z} from "zod";
 
-function MiddlewarePermissionsDeleteByNameDto(){
+function MiddlewareLoginsEmailUpdateDto(){
   return (req:Request,res:Response,next:NextFunction) => {
 
     const body_schema = z.object({
-      permission_name: z.string().nonempty().min(4).max(30)
+      email: z.string().email().max(255),
+      newemail:z.string().email().max(255),
     })
 
     try {
       body_schema.parse(req.body);
-      return next();
+      next();
     } catch (error:any) {
-      return res.status(HttpStatusCode.CONFLICT).json({error: error.format()});
+      return res.status(HttpStatusCode.CONFLICT).json({error: error.format()});      
     }
-
+    
   }
 }
 
-export {MiddlewarePermissionsDeleteByNameDto};
+export {MiddlewareLoginsEmailUpdateDto};
