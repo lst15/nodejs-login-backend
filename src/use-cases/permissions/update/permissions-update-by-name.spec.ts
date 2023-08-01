@@ -14,7 +14,11 @@ describe("Permissions update", () => {
   });
 
   it("should update a permission", async () => {
-    const permission: permissions = { name: "login_user", uuid: "abc-def-ghi" };
+    const permission: permissions = { 
+      name: "login_user", 
+      uuid: "abc-def-ghi", 
+      createdAt: new Date("2023-08-01T23:18:54.738Z")
+    };
     const newname = "signin_user";
 
     const afterdata = await sut.execute({
@@ -22,13 +26,14 @@ describe("Permissions update", () => {
       newname: newname,
     });
 
-    expect(afterdata).toContainEqual({ name: newname, uuid: permission.uuid });
+    expect(afterdata).toContainEqual({ name: newname, uuid: permission.uuid, createdAt: permission.createdAt });
   });
 
   it("should not update a permission", async () => {
     const permission: permissions = {
       name: "permission_not_exist",
       uuid: "abc-def-ghi",
+      createdAt: new Date("2023-08-01T23:18:54.738Z")
     };
     const newname = "signin_user";
 

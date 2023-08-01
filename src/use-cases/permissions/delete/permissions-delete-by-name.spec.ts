@@ -14,7 +14,7 @@ describe("Permissions delete", () => {
   });
 
   it("Should delete a permission", async () => {
-    const permission: permissions = { name: "login_user", uuid: "abc-def-ghi" };
+    const permission: permissions = { name: "login_user", uuid: "abc-def-ghi", createdAt: new Date() };
 
     const afterdata = await sut.execute({
       name: permission.name,
@@ -27,6 +27,7 @@ describe("Permissions delete", () => {
     const permission: permissions = {
       name: "permission_not_exist",
       uuid: "abc-def-ghi",
+      createdAt: new Date()
     };
 
     await expect(
