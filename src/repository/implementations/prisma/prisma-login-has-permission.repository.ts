@@ -49,8 +49,9 @@ class PrismaLoginHasPermissionRepository
   async removeAllLoginsByPermission(uuid_permission: string): Promise<any> {
     return await prisma.loginsHasPermissions.deleteMany({
       where: {
-        uuid_permission: uuid_permission,
+        uuid_permission: uuid_permission,        
       },
+      
     });
   }
 
