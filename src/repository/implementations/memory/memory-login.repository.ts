@@ -12,11 +12,11 @@ class MemoryLoginRepository implements InterfaceLoginRepository {
       return null;
     }
 
-    this.logins.map((login:logins) => {
+    this.logins.forEach(login => {
       if(login.email === email) {
         login.email = newemail;
-      }
-    })
+      }      
+    });
 
     return this.logins;
   }
@@ -28,11 +28,11 @@ class MemoryLoginRepository implements InterfaceLoginRepository {
       return null;
     }
 
-    this.logins.map((login:logins) => {
+    this.logins.forEach(login => {
       if(login.email === email) {
         login.password = newpassword;
-      }
-    })
+      }      
+    });
 
     return this.logins;
   }

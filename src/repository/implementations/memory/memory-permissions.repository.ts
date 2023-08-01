@@ -1,5 +1,4 @@
 import { permissions } from "@prisma/client";
-import { GetResult } from "@prisma/client/runtime/library";
 import { InterfacePermissionRepository } from "src/repository/interfaces/interface-permission.repository";
 import { uuid } from "uuidv4";
 
@@ -53,11 +52,11 @@ class MemoryPermissionsRepository implements InterfacePermissionRepository {
       return null;
     }
 
-    this.permissions.map((permission:permissions) => {
+    this.permissions.forEach(permission => {
       if(permission.name === oldname) {
         permission.name = newname;
-      }
-    })
+      }      
+    });
 
     return this.permissions;
   }
