@@ -17,9 +17,9 @@ class LoginsAuthUseCase {
     if (!userExists) {
       throw new RecordNotFound("user or password")
     }
-
+    
     const isCorrectPassword = await bcrypt.compare(password, userExists.password);
-
+    
     if (!isCorrectPassword) {
       throw new RecordNotFound("user or password")
     }

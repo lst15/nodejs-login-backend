@@ -22,4 +22,5 @@ describe("Permissions find by name", () => {
       sut.execute({name: "not_found"})
     ).rejects.toBeInstanceOf(RecordNotFound)
   });
+  
 })
