@@ -5,20 +5,6 @@ import { uuid } from "uuidv4";
 
 class MemoryLoginRepository implements InterfaceLoginRepository {
 
-  loginAuth(email: string, password: string) {
-    const login = this.logins.find(login => login.email === email);
-
-    if (!login) {
-      return null;
-    }
-
-    if(login.password != password){      
-      return null;
-    }
-
-    return login;
-  }
-
   updateEmail(email: string, newemail: string): logins[] | null {
     const login = this.logins.find(login => login.email === email);
 
