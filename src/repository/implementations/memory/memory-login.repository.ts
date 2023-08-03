@@ -1,6 +1,5 @@
 import { InterfaceLoginRepository } from "../../interfaces/interface-login.repository";
 import { Prisma, logins } from "@prisma/client";
-import { uuid } from "uuidv4";
 
 class MemoryLoginRepository implements InterfaceLoginRepository {
 
@@ -29,24 +28,22 @@ class MemoryLoginRepository implements InterfaceLoginRepository {
   }
 
   deleteByEmail(email: string) {
-    //const login = this.logins.find(login => login.email === email);
+    const login = this.logins.find(login => login.email === email);
 
-    const data_modified = this.logins.filter(
+    this.logins = this.logins.filter(
       (login: logins) => login.email !== email
     );
 
-    return data_modified;
+    return login;
   }
 
   findByUuId(uuid: string): logins | null {
     const login = this.logins.find((login) => login.uuid === uuid);
-
     return login as logins;
   }
 
   findByEmail(email: string): logins | null {
     const login = this.logins.find((login) => login.email === email);
-
     return login as logins;
   }
 
@@ -56,7 +53,7 @@ class MemoryLoginRepository implements InterfaceLoginRepository {
       password: data.password,
       createdAt: new Date("2023-08-01T23:18:54.738Z"),
       updatedAt: new Date("2023-08-01T23:18:54.738Z"),
-      uuid: uuid() as any,
+      uuid: 'abc-def-ghi-jkl',
     };
 
     this.logins.push(login);
