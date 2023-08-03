@@ -1,16 +1,11 @@
-import { GetResult } from "@prisma/client/runtime/library";
 import { InterfaceLoginRepository } from "../../interfaces/interface-login.repository";
 import { Prisma, logins } from "@prisma/client";
 import { uuid } from "uuidv4";
 
 class MemoryLoginRepository implements InterfaceLoginRepository {
 
-  updateEmail(email: string, newemail: string): logins[] | null {
+  updateEmail(email: string, newemail: string): logins[] | logins | null {
     const login = this.logins.find(login => login.email === email);
-
-    if (!login) {
-      return null;
-    }
 
     this.logins.forEach(login => {
       if (login.email === email) {
@@ -18,15 +13,11 @@ class MemoryLoginRepository implements InterfaceLoginRepository {
       }
     });
 
-    return this.logins;
+    return login as logins;
   }
 
   updatePassword(email: string, newpassword: string): logins[] | null {
-    const login = this.logins.find(login => login.email === email);
-
-    if (!login) {
-      return null;
-    }
+    //const login = this.logins.find(login => login.email === email);
 
     this.logins.forEach(login => {
       if (login.email === email) {
@@ -38,14 +29,7 @@ class MemoryLoginRepository implements InterfaceLoginRepository {
   }
 
   deleteByEmail(email: string) {
-    const login = this.logins.find(
-      (login) => login.email === email
-    );
-
-    if (!login) {
-      return null;
-    }
-
+  
     const data_modified = this.logins.filter(
       (login: logins) => login.email !== email
     );
@@ -56,21 +40,13 @@ class MemoryLoginRepository implements InterfaceLoginRepository {
   findByUuId(uuid: string): logins | null {
     const login = this.logins.find((login) => login.uuid === uuid);
 
-    if (!login) {
-      return null;
-    }
-
-    return login;
+    return login as logins;
   }
 
   findByEmail(email: string): logins | null {
     const login = this.logins.find((login) => login.email === email);
 
-    if (!login) {
-      return null;
-    }
-
-    return login;
+    return login as logins;
   }
 
   create(data: Prisma.loginsUncheckedCreateInput) {
