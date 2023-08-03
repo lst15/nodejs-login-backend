@@ -16,8 +16,8 @@ class MemoryLoginRepository implements InterfaceLoginRepository {
     return login as logins;
   }
 
-  updatePassword(email: string, newpassword: string): logins[] | null {
-    //const login = this.logins.find(login => login.email === email);
+  updatePassword(email: string, newpassword: string): logins[] | logins | null {
+    const login = this.logins.find(login => login.email === email);
 
     this.logins.forEach(login => {
       if (login.email === email) {
@@ -25,11 +25,12 @@ class MemoryLoginRepository implements InterfaceLoginRepository {
       }
     });
 
-    return this.logins;
+    return login as logins;
   }
 
   deleteByEmail(email: string) {
-  
+    //const login = this.logins.find(login => login.email === email);
+
     const data_modified = this.logins.filter(
       (login: logins) => login.email !== email
     );

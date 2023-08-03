@@ -19,7 +19,7 @@ class LoginsPasswordUpdateUseCase {
     }
 
     const bcryptPassword = await bcrypt.hash(newpassword, 10);
-
+    
     return await this.loginsRepository.updatePassword(email,bcryptPassword)
   }
 }
