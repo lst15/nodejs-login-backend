@@ -11,11 +11,6 @@ class LoginsFindByEmailUseCase {
   
   async execute({ email }: LoginsFindByEmailUseCaseRequest): Promise<logins | null> {
     const user = await this.loginsRepository.findByEmail(email);
-
-    if(!user){
-      throw new RecordNotFound("email");
-    }
-
     return user;
   }
 }

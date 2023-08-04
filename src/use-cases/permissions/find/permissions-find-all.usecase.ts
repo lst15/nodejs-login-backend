@@ -8,11 +8,6 @@ class PermissionsFindAllUseCase {
 
   async execute(): Promise<permissions[]> {
     const permissions = await this.permissionsRepository.findAll();
-    
-    if(!permissions){
-      throw new RecordNotFound("permissions")
-    }
-
     return permissions;
   }
 }

@@ -15,15 +15,15 @@ class MemoryLoginRepository implements InterfaceLoginRepository {
     return login as logins;
   }
 
-  updatePassword(email: string, newpassword: string): logins[] | logins | null {
-    const login = this.logins.find(login => login.email === email);
+  updatePassword(email: string, newpassword: string): logins[] | logins | null {    
 
     this.logins.forEach(login => {
       if (login.email === email) {
         login.password = newpassword;
       }
     });
-
+    
+    const login = this.logins.find(login => login.email === email);
     return login as logins;
   }
 
@@ -37,6 +37,7 @@ class MemoryLoginRepository implements InterfaceLoginRepository {
     return login;
   }
 
+  
   findByUuId(uuid: string): logins | null {
     const login = this.logins.find((login) => login.uuid === uuid);
     return login as logins;

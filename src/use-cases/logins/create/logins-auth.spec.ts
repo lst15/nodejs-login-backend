@@ -21,7 +21,7 @@ describe("Login auth", () => {
     ).toHaveProperty("uuid");
   });
   
-  it("Should not be able to authenticate", async () => {
+  it("Should not be able to authenticate because password is incorrect", async () => {
     await expect(
       sut.execute({
         email: "user2@example.com",
@@ -29,4 +29,16 @@ describe("Login auth", () => {
       })
     ).rejects.toBeInstanceOf(RecordNotFound)
   });
+  
+  it("Should not be able to authenticate because email is incorrect", async () => {
+    await expect(
+      sut.execute({
+        email: "user-not-exists@example.com",
+        password: "123"
+      })
+    ).rejects.toBeInstanceOf(RecordNotFound)    
+  })
+
+
+
 });

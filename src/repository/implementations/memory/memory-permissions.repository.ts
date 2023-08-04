@@ -35,22 +35,12 @@ class MemoryPermissionsRepository implements InterfacePermissionRepository {
   }
 
   deleteByName(name: string):permissions[] | null {
-    const permission = this.permissions.find(permission => permission.name === name);
-
-    if(!permission) {
-      return null
-    }
-
+ 
     const data_modified = this.permissions.filter((permission:permissions) => permission.name !== name);
     return data_modified;
   }
 
   updateByName(oldname: string, newname: string): permissions[] | null {
-    const permission = this.permissions.find(permission => permission.name === oldname);
-
-    if(!permission){
-      return null;
-    }
 
     this.permissions.forEach(permission => {
       if(permission.name === oldname) {
@@ -63,12 +53,7 @@ class MemoryPermissionsRepository implements InterfacePermissionRepository {
 
   findByName(name: string): permissions | null{
     const permission = this.permissions.find(permission => permission.name === name);
-    
-    if(!permission) {
-      return null;
-    }
-
-    return permission;
+    return permission as permissions;
   }
   
 }
