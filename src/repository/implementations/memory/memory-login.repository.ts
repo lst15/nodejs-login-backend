@@ -2,6 +2,31 @@ import { InterfaceLoginRepository } from "../../interfaces/interface-login.repos
 import { Prisma, logins } from "@prisma/client";
 
 class MemoryLoginRepository implements InterfaceLoginRepository {
+  private createdAt = new Date("2023-08-01T23:18:54.738Z");
+
+  private logins: logins[] = [
+    {
+      uuid: "00000000-0000-0000-0000-000000000001",
+      email: "user1@example.com",
+      password: "$2b$10$vA2f3Rw5Zh2u4iCM1fI6keqiyXizk3wpTX383iNqblkrB66wRTwHu", //123
+      createdAt: this.createdAt,
+      updatedAt: this.createdAt,
+    },
+    {
+      uuid: "00000000-0000-0000-0000-000000000002",
+      email: "user2@example.com",
+      password: "$2b$10$vA2f3Rw5Zh2u4iCM1fI6keqiyXizk3wpTX383iNqblkrB66wRTwHu", //123
+      createdAt: this.createdAt,
+      updatedAt: this.createdAt,
+    },
+    {
+      uuid: "00000000-0000-0000-0000-000000000003",
+      email: "user3@example.com",
+      password: "$2b$10$vA2f3Rw5Zh2u4iCM1fI6keqiyXizk3wpTX383iNqblkrB66wRTwHu", //123
+      createdAt: this.createdAt,
+      updatedAt: this.createdAt,
+    },
+  ];
 
   updateEmail(email: string, newemail: string): logins[] | logins | null {
     const login = this.logins.find(login => login.email === email);
@@ -52,38 +77,15 @@ class MemoryLoginRepository implements InterfaceLoginRepository {
     const login: logins = {
       email: data.email,
       password: data.password,
-      createdAt: new Date("2023-08-01T23:18:54.738Z"),
-      updatedAt: new Date("2023-08-01T23:18:54.738Z"),
-      uuid: 'abc-def-ghi-jkl',
+      createdAt: this.createdAt,
+      updatedAt: this.createdAt,
+      uuid: data.uuid as string,
     };
 
     this.logins.push(login);
     return login;
   }
 
-  private logins: logins[] = [
-    {
-      uuid: "abc-def-ghi",
-      email: "user1@example.com",
-      password: "$2b$10$vA2f3Rw5Zh2u4iCM1fI6keqiyXizk3wpTX383iNqblkrB66wRTwHu", //123
-      createdAt: new Date("2023-08-01T23:18:54.738Z"),
-      updatedAt: new Date("2023-08-01T23:18:54.738Z"),
-    },
-    {
-      uuid: "jkl-mno-pqr",
-      email: "user2@example.com",
-      password: "$2b$10$vA2f3Rw5Zh2u4iCM1fI6keqiyXizk3wpTX383iNqblkrB66wRTwHu", //123
-      createdAt: new Date("2023-08-01T23:18:54.738Z"),
-      updatedAt: new Date("2023-08-01T23:18:54.738Z"),
-    },
-    {
-      uuid: "stu-vwx-yz0",
-      email: "user3@example.com",
-      password: "$2b$10$vA2f3Rw5Zh2u4iCM1fI6keqiyXizk3wpTX383iNqblkrB66wRTwHu", //123
-      createdAt: new Date("2023-08-01T23:18:54.738Z"),
-      updatedAt: new Date("2023-08-01T23:18:54.738Z"),
-    },
-  ];
 }
 
 export { MemoryLoginRepository };

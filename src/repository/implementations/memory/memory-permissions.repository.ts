@@ -3,17 +3,20 @@ import { InterfacePermissionRepository } from "src/repository/interfaces/interfa
 import { uuid } from "uuidv4";
 
 class MemoryPermissionsRepository implements InterfacePermissionRepository {
+  private createdAt = new Date("2023-08-01T23:18:54.738Z");
+
   private permissions:permissions[] = [
-    {name:"login_user",uuid:"abc-def-ghi",createdAt:new Date("2023-08-01T23:18:54.738Z")},
-    {name:"register_user",uuid:"jkl-mno-pqr",createdAt:new Date("2023-08-01T23:18:54.738Z")},
-    {name:"delete_user",uuid:"stu-vwx-yz0",createdAt:new Date("2023-08-01T23:18:54.738Z")},    
+    {name:"login_user",uuid:"00000000-0000-0000-0000-000000000010",createdAt: this.createdAt},
+    {name:"register_user",uuid:"00000000-0000-0000-0000-000000000020",createdAt: this.createdAt},
+    {name:"delete_user",uuid:"00000000-0000-0000-0000-000000000030",createdAt: this.createdAt},    
   ];
+  
   
   create(name: string): permissions {
     const permission:permissions = {
       name: name,
       uuid: uuid(),
-      createdAt:new Date("2023-08-01T23:18:54.738Z")
+      createdAt: this.createdAt
     }
 
     this.permissions.push(permission);
