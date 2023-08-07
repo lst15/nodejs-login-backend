@@ -2,7 +2,7 @@ import HttpStatusCode from "@enums/enums-status-http-code";
 import { NextFunction, Request, Response } from "express";
 import {z} from "zod";
 
-function MiddlewareRoleHasPermissionsDelegate(){
+function MiddlewareRoleHasPermissionsDelegateDto(){
   return (req:Request,res:Response,next:NextFunction) => {
 
     const body_schema = z.object({
@@ -20,4 +20,4 @@ function MiddlewareRoleHasPermissionsDelegate(){
   }
 }
 
-export {MiddlewareRoleHasPermissionsDelegate};
+export {MiddlewareRoleHasPermissionsDelegateDto};

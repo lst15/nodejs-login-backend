@@ -18,3 +18,5 @@ function MiddlewareRoleHasPermissionsFindPermissionsByRoleDto(){
 
   }
 }
+
+export {MiddlewareRoleHasPermissionsFindPermissionsByRoleDto};

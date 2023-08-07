@@ -11,6 +11,9 @@ import { LoginsDeleteRoutes } from "./http/routes/logins/logins.delete.routes";
 import { RolesCreateRoutes } from "./http/routes/roles/roles-create.routes";
 import { RolesFindRoutes } from "./http/routes/roles/roles-find.routes";
 import { RolesDeleteRoutes } from "./http/routes/roles/roles-delete.route";
+import { RoleHasPermissionsCreateRoutes } from "./http/routes/role-has-permissions/role-has-permissions-create.routes";
+import { RoleHasPermissionsDeleteRoutes } from "./http/routes/role-has-permissions/role-has-permissions-delete.routes";
+import { RoleHasPermissionsFindRoutes } from "./http/routes/role-has-permissions/role-has-permissions-find.routes";
 
 export const app = express();
 
@@ -36,3 +39,7 @@ PermissionsUpdateRoutes(app);
 RolesCreateRoutes(app);
 RolesFindRoutes(app);
 RolesDeleteRoutes(app);
+
+RoleHasPermissionsCreateRoutes(app);
+RoleHasPermissionsDeleteRoutes(app);
+RoleHasPermissionsFindRoutes(app);
