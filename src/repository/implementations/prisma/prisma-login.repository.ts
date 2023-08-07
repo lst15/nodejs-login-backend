@@ -33,7 +33,7 @@ class   PrismaLoginRepository implements InterfaceLoginRepository {
       where: {
         email: email
       },
-      include:{permissions:true}
+      include:{role_fk:true}
     });
   }
 
@@ -57,7 +57,8 @@ class   PrismaLoginRepository implements InterfaceLoginRepository {
     return await prisma.logins.create({
       data: {
         email: data.email,
-        password: data.password
+        password: data.password,
+        role:data.role
       },
     })
   }
