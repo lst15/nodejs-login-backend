@@ -45,8 +45,7 @@ class   PrismaLoginRepository implements InterfaceLoginRepository {
     });
   }
 
-  async findByEmail(email: string): Promise<logins | null> {
-    console.log(email,"cafe")
+  async findByEmail(email: string): Promise<logins | null> {    
     return await prisma.logins.findUnique({
       where: {
         email: email

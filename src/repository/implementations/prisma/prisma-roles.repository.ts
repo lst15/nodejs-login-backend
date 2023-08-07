@@ -18,7 +18,7 @@ class PrismaRolesRepository implements InterfaceRolesRepository {
     })
   }
 
-  async deleteRoleByName(name: string): Promise<roles> {
+  async deleteRoleByName(name: string): Promise<roles> {    
     return await prisma.roles.delete({
       where:{
         name:name

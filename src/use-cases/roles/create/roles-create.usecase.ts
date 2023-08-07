@@ -8,7 +8,7 @@ class RolesCreateUseCase {
   constructor(private rolesRepository: InterfaceRolesRepository){}
 
   async execute({name}:RolesCreateUseCaseRequest){
-    return this.rolesRepository.create({name});
+    return await this.rolesRepository.create({name});
   }
 }
 

@@ -7,7 +7,7 @@ interface RolesDeleteByNameUseCaseRequest {
 class RolesDeleteByNameUseCase {
   constructor(private rolesRepository:InterfaceRolesRepository){}
 
-  async execute({name}:RolesDeleteByNameUseCaseRequest) {
+  async execute({name}:RolesDeleteByNameUseCaseRequest) {    
     return await this.rolesRepository.deleteRoleByName(name);
   }
 }

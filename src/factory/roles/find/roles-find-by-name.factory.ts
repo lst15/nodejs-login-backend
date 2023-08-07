@@ -1,9 +1,9 @@
 import { PrismaRolesRepository } from "src/repository/implementations/prisma/prisma-roles.repository";
-import { RolesDeleteByNameUseCase } from "src/use-cases/roles/delete/roles-delete-by-name.usecase";
+import { RolesFindByNameUseCase } from "src/use-cases/roles/find/roles-find-by-name.usecase";
 
 function RolesFindByNameFactory(){
   const repository = new PrismaRolesRepository();
-  return new RolesDeleteByNameUseCase(repository);
+  return new RolesFindByNameUseCase(repository);
 }
 
 export {RolesFindByNameFactory}

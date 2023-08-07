@@ -10,7 +10,8 @@ function MiddlewareRolesFindByNameDto(){
     })
 
     try {
-      body_schema.parse(req.param);
+      body_schema.parse(req.params);
+      next()
     } catch (error:any) {
       return res.status(HttpStatusCode.CONFLICT).json({message:error.format()})
     }
