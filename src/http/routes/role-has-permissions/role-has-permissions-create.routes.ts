@@ -3,7 +3,7 @@ import { RoleHasPermissionsDelegateController } from "src/http/controllers/role-
 import { MiddlewareRoleHasPermissionsDelegateDto } from "src/http/middleware/dto/role-has-permissions/create/middleware-role-has-permissions-delegate.dto";
 
 function RoleHasPermissionsCreateRoutes(app:Express) {
-  app.post("/role/permissions",
+  app.post("/roles/permissions",
     MiddlewareRoleHasPermissionsDelegateDto(),
     RoleHasPermissionsDelegateController
   );

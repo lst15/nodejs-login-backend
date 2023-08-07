@@ -4,7 +4,7 @@ import { RoleHasPermissionsFindByRoleFactory } from "src/factory/role-has-permis
 
 const RoleHasPermissionsFindPermissionsByRoleController = async(req:Request,res:Response) => {
   const {role_name} = req.params;
-
+  
   const factory = RoleHasPermissionsFindByRoleFactory()
 
   try {

@@ -8,7 +8,7 @@ function MiddlewareRoleHasPermissionsFindPermissionsByRoleDto(){
     const body_schema = z.object({
       role_name: z.string().nonempty().max(15)
     })
-
+    console.log(req.params)
     try {
       body_schema.parse(req.params)
       next();
