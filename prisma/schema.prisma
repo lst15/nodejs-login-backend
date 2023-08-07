@@ -15,10 +15,12 @@ model logins {
   uuid String @id @default(uuid())
   email String @db.VarChar(100)
   password String @db.VarChar(150)
+
+  role_fk roles @relation(fields: [role],references: [uuid])
+  role String
+
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
-
-  permissions loginsHasPermissions[] @relation("fk_login")
 
   @@map("Login")
   @@unique([email])
@@ -28,24 +30,34 @@ model logins {
 model permissions {
   uuid String @id @default(uuid())
   name String @db.VarChar(20)
-  createdAt DateTime @default(now())
-
-  delegates loginsHasPermissions[] @relation("fk_permissions")
+  createdAt DateTime @default(now())  
   
+  roleHasPermissions_relation roleHasPermissions[]
+
   @@map("Permission")
   @@unique([name])
 }
 
-model loginsHasPermissions {
+model roles {
   uuid String @id @default(uuid())
-  
-  login logins @relation("fk_login",fields: [uuid_login],references: [uuid])
-  uuid_login String
+  name String @db.VarChar(10)
+  createdAt DateTime @default(now())
 
-  permission permissions @relation("fk_permissions",fields: [uuid_permission],references: [uuid])
+  logins_relation logins[]
+  roleHasPermissions_relation roleHasPermissions[]
+  @@map("Role")
+  @@unique([name])
+}
+
+model roleHasPermissions {
+  uuid String @id @default(uuid())
+
+  roles_fk roles @relation(fields: [uuid_role],references: [uuid])
+  uuid_role String
+
+  permissions_fk permissions @relation(fields: [uuid_permission],references: [uuid])
   uuid_permission String
 
-  createdAt DateTime @default(now())
-  
-  @@map("Login_has_Permission")
+  @@map("roleHasPermission")
+  @@unique([uuid_role,uuid_permission])
 }
