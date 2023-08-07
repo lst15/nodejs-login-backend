@@ -15,7 +15,7 @@ describe("Permissions find by uuid", () => {
   it("Should be able to find a permission by uuid", async () => {
     expect(
       await sut.execute({
-        uuid: "stu-vwx-yz0",
+        uuid: "00000000-0000-0000-0000-000000000010",
       })
     );
   });

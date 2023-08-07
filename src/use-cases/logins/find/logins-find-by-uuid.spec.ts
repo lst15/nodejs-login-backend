@@ -14,7 +14,7 @@ describe("Logins find by uuid", () => {
   it("Should be able to find a login by uuid", async () => {
     expect(
       await sut.execute({
-        uuid: "abc-def-ghi"
+        uuid: "00000000-0000-0000-0000-000000000001"
       })
     ).toHaveProperty("uuid")
   })

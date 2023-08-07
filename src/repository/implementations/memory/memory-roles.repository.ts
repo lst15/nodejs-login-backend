@@ -54,3 +54,5 @@ class MemoryRolesRepository implements InterfaceRolesRepository {
   }
 
 }
+
+export {MemoryRolesRepository};

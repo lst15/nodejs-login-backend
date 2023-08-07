@@ -16,7 +16,7 @@ describe("Permissions update", () => {
   it("should update a permission", async () => {
     const permission: permissions = { 
       name: "login_user", 
-      uuid: "abc-def-ghi", 
+      uuid: "00000000-0000-0000-0000-000000000010", 
       createdAt: new Date("2023-08-01T23:18:54.738Z")
     };
     const newname = "signin_user";
