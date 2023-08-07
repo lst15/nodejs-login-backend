@@ -45,3 +45,5 @@ class PrismaRoleHasPermissionsRepository implements InterfaceRoleHasPermissionsR
   }
 
 }
+
+export {PrismaRoleHasPermissionsRepository};

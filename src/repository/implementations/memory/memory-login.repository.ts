@@ -11,6 +11,7 @@ class MemoryLoginRepository implements InterfaceLoginRepository {
       password: "$2b$10$vA2f3Rw5Zh2u4iCM1fI6keqiyXizk3wpTX383iNqblkrB66wRTwHu", //123
       createdAt: this.createdAt,
       updatedAt: this.createdAt,
+      role:"admin"
     },
     {
       uuid: "00000000-0000-0000-0000-000000000002",
@@ -18,6 +19,7 @@ class MemoryLoginRepository implements InterfaceLoginRepository {
       password: "$2b$10$vA2f3Rw5Zh2u4iCM1fI6keqiyXizk3wpTX383iNqblkrB66wRTwHu", //123
       createdAt: this.createdAt,
       updatedAt: this.createdAt,
+      role:"admin"
     },
     {
       uuid: "00000000-0000-0000-0000-000000000003",
@@ -25,6 +27,7 @@ class MemoryLoginRepository implements InterfaceLoginRepository {
       password: "$2b$10$vA2f3Rw5Zh2u4iCM1fI6keqiyXizk3wpTX383iNqblkrB66wRTwHu", //123
       createdAt: this.createdAt,
       updatedAt: this.createdAt,
+      role:"admin"
     },
   ];
 
@@ -80,6 +83,7 @@ class MemoryLoginRepository implements InterfaceLoginRepository {
       createdAt: this.createdAt,
       updatedAt: this.createdAt,
       uuid: data.uuid as string,
+      role:data.role
     };
 
     this.logins.push(login);

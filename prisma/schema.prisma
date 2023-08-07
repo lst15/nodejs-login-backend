@@ -49,14 +49,15 @@ model roles {
   @@unique([name])
 }
 
-model roleHasPermissions {
-  uuid String @id @default(uuid())
+model roleHasPermissions {  
 
   roles_fk roles @relation(fields: [uuid_role],references: [uuid])
   uuid_role String
 
   permissions_fk permissions @relation(fields: [uuid_permission],references: [uuid])
   uuid_permission String
+
+  createdAt DateTime @default(now())
 
   @@map("roleHasPermission")
   @@unique([uuid_role,uuid_permission])
