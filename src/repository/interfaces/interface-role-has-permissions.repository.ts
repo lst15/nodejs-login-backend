@@ -7,4 +7,4 @@ interface InterfaceRoleHasPermissionsRepository {
   deleteRolePermission(role_name:string,permission_name:string): Promise<any>;
 }
 
-export {InterfaceRoleHasPermissionsRepository}
+export {InterfaceRoleHasPermissionsRepository};
