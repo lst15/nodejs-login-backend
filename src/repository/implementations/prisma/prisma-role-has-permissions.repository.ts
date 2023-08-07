@@ -1,5 +1,4 @@
 import { roleHasPermissions } from "@prisma/client";
-import { GetResult } from "@prisma/client/runtime/library";
 import { prisma } from "src/lib/prisma.lib";
 import { InterfaceRoleHasPermissionsRepository } from "src/repository/interfaces/interface-role-has-permissions.repository";
 
