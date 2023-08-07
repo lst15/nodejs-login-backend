@@ -6,11 +6,11 @@ import { PermissionsCreateRoutes } from "./http/routes/permissions/permissions.c
 import { PermissionsFindRoutes } from "./http/routes/permissions/permissions.find.routes";
 import { PermissionsDeleteRoutes } from "./http/routes/permissions/permissions.delete.routes";
 import { PermissionsUpdateRoutes } from "./http/routes/permissions/permissions.update.routes";
-import LoginsHasPermissionsCreateRouter from "./http/routes/logins-has-permissions/logins-has-permissions.create.router";
-import LoginsHasPermissionsDeleteRouter from "./http/routes/logins-has-permissions/logins-has-permissions.delete.router";
-import { LoginsHasPermissionsFindRouter } from "./http/routes/logins-has-permissions/logins-has-permissions.find.router";
 import { LoginsUpdateRoutes } from "./http/routes/logins/logins.update.routes";
 import { LoginsDeleteRoutes } from "./http/routes/logins/logins.delete.routes";
+import { RolesCreateRoutes } from "./http/routes/roles/roles-create.routes";
+import { RolesFindRoutes } from "./http/routes/roles/roles-find.routes";
+import { RolesDeleteRoutes } from "./http/routes/roles/roles-delete.route";
 
 export const app = express();
 
@@ -28,11 +28,11 @@ LoginsFindRoutes(app);
 LoginsUpdateRoutes(app);
 LoginsDeleteRoutes(app);
 
-PermissionsCreateRoutes(app)
-PermissionsFindRoutes(app)
-PermissionsDeleteRoutes(app)
-PermissionsUpdateRoutes(app)
+PermissionsCreateRoutes(app);
+PermissionsFindRoutes(app);
+PermissionsDeleteRoutes(app);
+PermissionsUpdateRoutes(app);
 
-LoginsHasPermissionsCreateRouter(app);
-LoginsHasPermissionsDeleteRouter(app);
-LoginsHasPermissionsFindRouter(app);
+RolesCreateRoutes(app);
+RolesFindRoutes(app);
+RolesDeleteRoutes(app);
