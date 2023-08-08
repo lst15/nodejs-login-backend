@@ -8,7 +8,13 @@ class RolesCreateUseCase {
   constructor(private rolesRepository: InterfaceRolesRepository){}
 
   async execute({name}:RolesCreateUseCaseRequest){
-    return await this.rolesRepository.create({name});
+    const created = await this.rolesRepository.create({name});
+    
+    if(!created){
+      throw new Error("generic error")
+    }
+
+    return created;
   }
 }
 

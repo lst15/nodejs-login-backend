@@ -15,7 +15,7 @@ class MemoryRolesRepository implements InterfaceRolesRepository {
   create(data: Prisma.rolesUncheckedCreateInput): roles | null{
     const find = this.roles.find(role => role.name == data.name);
 
-    if(!find){
+    if(find){
       return null;
     }
 
