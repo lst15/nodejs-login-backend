@@ -1,6 +1,5 @@
 import { permissions } from "@prisma/client";
 import { InterfacePermissionRepository } from "src/repository/interfaces/interface-permission.repository";
-import { uuid } from "uuidv4";
 
 class MemoryPermissionsRepository implements InterfacePermissionRepository {
   private createdAt = new Date("2023-08-01T23:18:54.738Z");
@@ -15,7 +14,7 @@ class MemoryPermissionsRepository implements InterfacePermissionRepository {
   create(name: string): permissions {
     const permission:permissions = {
       name: name,
-      uuid: uuid(),
+      uuid: `00000000-0000-0000-0000-0000000000${this.permissions.length+1}0`,
       createdAt: this.createdAt
     }
 

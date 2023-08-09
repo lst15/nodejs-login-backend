@@ -6,19 +6,6 @@ import { RoleHasPermissionsFindPermissionsByRoleUseCase } from "src/use-cases/ro
 class MemoryRoleHasPermissions implements InterfaceRoleHasPermissionsRepository {
   private createdAt = new Date("2023-08-01T23:18:54.738Z");
 
-  private permissions:permissions[] = [
-    {name:"login_user",uuid:"00000000-0000-0000-0000-000000000010",createdAt: this.createdAt},
-    {name:"ban_user",uuid:"00000000-0000-0000-0000-000000000020",createdAt: this.createdAt} 
-  ];
-  
-  private roles:roles[] = [
-    {
-      name:"admin",
-      uuid:"00000000-0000-0000-0000-000000000100",
-      createdAt:this.createdAt
-    }
-  ] 
-
   private roleHasPermissions:roleHasPermissions[] = [
     {
       uuid_role:"00000000-0000-0000-0000-000000000100",
@@ -28,12 +15,6 @@ class MemoryRoleHasPermissions implements InterfaceRoleHasPermissionsRepository 
   ]
 
   delegate(uuid_role: string, uuid_permission: string): roleHasPermissions | null {
-    const foundRole = this.roles.find(role => role.uuid == uuid_role);
-    const foundPermission = this.permissions.find(permission => permission.uuid == uuid_permission);
-
-    if(!foundRole || !foundPermission){
-      return null;
-    }
 
     const found = this.roleHasPermissions.find(
       roleHasPermissions =>
@@ -55,43 +36,25 @@ class MemoryRoleHasPermissions implements InterfaceRoleHasPermissionsRepository 
     return roleHasPermission;
   }
 
-  findPermissionsByRole(name: string): roleHasPermissions[] | null{
-    const foundRole = this.roles.find(role => role.name == name);
-    
-    if(!foundRole){
-      return null;
-    }
-
-    return this.roleHasPermissions.filter(roleHasPermission => roleHasPermission.uuid_role == foundRole.uuid);    
+  findPermissionsByRole(uuid_role: string): roleHasPermissions[] | null{
+    return this.roleHasPermissions.filter(roleHasPermission => roleHasPermission.uuid_role == uuid_role);    
   }
 
-  findRolesByPermission(name: string): roleHasPermissions[] | null{
-    const foundPermission = this.permissions.find(permission => permission.name == name);
-
-    if(!foundPermission) {
-      return null;
-    }
-
-    return this.roleHasPermissions.filter(roleHasPermission => roleHasPermission.uuid_permission == foundPermission.uuid);
+  findRolesByPermission(uuid_permission: string): roleHasPermissions[] | null{    
+    return this.roleHasPermissions.filter(roleHasPermission => roleHasPermission.uuid_permission == uuid_permission);
   }
 
-  deleteRolePermission(role_name: string, permission_name: string): roleHasPermissions | null {
-    const foundRole = this.roles.find(role => role.name == role_name);
-    const foundPermission = this.permissions.find(permission => permission.name == permission_name);
-
-    if(!foundRole || !foundPermission){
-      return null;
-    }
+  deleteRolePermission(uuid_role: string, uuid_permission: string): roleHasPermissions | null {
 
     const found = this.roleHasPermissions.find(
       roleHasPermissions =>
-        roleHasPermissions.uuid_role == foundRole.uuid &&
-        roleHasPermissions.uuid_permission == foundPermission.uuid
+        roleHasPermissions.uuid_role == uuid_role &&
+        roleHasPermissions.uuid_permission == uuid_permission
     );
 
     this.roleHasPermissions = this.roleHasPermissions.filter(
       roleHasPermission =>         
-        roleHasPermission.uuid_permission != foundPermission.uuid
+        roleHasPermission.uuid_permission != uuid_permission
     )
     
     return found as roleHasPermissions;
