@@ -1,3 +1,4 @@
+import { InterfacePermissionRepository } from "src/repository/interfaces/interface-permission.repository";
 import { InterfaceRoleHasPermissionsRepository } from "src/repository/interfaces/interface-role-has-permissions.repository";
 
 interface RoleHasPermissionsFindRolesByPermissionUseCaseRequest {
@@ -5,10 +6,18 @@ interface RoleHasPermissionsFindRolesByPermissionUseCaseRequest {
 }
 
 class RoleHasPermissionsFindRolesByPermissionUseCase {
-  constructor(private roleHasPermissionsRepository:InterfaceRoleHasPermissionsRepository){}
+  constructor(
+    private roleHasPermissionsRepository:InterfaceRoleHasPermissionsRepository,    
+    private permissionsRepository:InterfacePermissionRepository
+  ){}
+  async execute({permission_name}:RoleHasPermissionsFindRolesByPermissionUseCaseRequest){    
+    const foundPermission = await this.permissionsRepository.findByName(permission_name);
+    
+    if(!foundPermission) {
+      throw new Error("permission");
+    }
 
-  async execute({permission_name}:RoleHasPermissionsFindRolesByPermissionUseCaseRequest){
-    return await  this.roleHasPermissionsRepository.findRolesByPermission(permission_name);
+    return await  this.roleHasPermissionsRepository.findRolesByPermission(foundPermission.uuid);
   }
 
 }

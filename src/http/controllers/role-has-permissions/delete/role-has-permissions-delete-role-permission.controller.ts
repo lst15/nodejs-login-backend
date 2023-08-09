@@ -11,7 +11,7 @@ const RoleHasPermissionsDeleteRolePermissionController = async(req:Request,res:R
     const deleted = await factory.execute({role_name:role_name,permission_name:permission_name});
     res.status(HttpStatusCode.OK).json(deleted);
   } catch (error) {
-    res.status(HttpStatusCode.CONFLICT).json(error);
+    res.status(HttpStatusCode.CONFLICT).json({error: error});
   }
 
 }

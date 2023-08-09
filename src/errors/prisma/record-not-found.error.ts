@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client";
+ import { Prisma } from "@prisma/client";
 import { QueryError } from "../../enums/enums-prisma-errors";
 
 class RecordNotFound extends Prisma.PrismaClientKnownRequestError {
