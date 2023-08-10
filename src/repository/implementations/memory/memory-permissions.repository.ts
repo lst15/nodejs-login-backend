@@ -7,7 +7,8 @@ class MemoryPermissionsRepository implements InterfacePermissionRepository {
   private permissions:permissions[] = [
     {name:"login_user",uuid:"00000000-0000-0000-0000-000000000010",createdAt: this.createdAt},
     {name:"register_user",uuid:"00000000-0000-0000-0000-000000000020",createdAt: this.createdAt},
-    {name:"delete_user",uuid:"00000000-0000-0000-0000-000000000030",createdAt: this.createdAt},    
+    {name:"delete_user",uuid:"00000000-0000-0000-0000-000000000030",createdAt: this.createdAt},
+    {name:"create_user",uuid:"00000000-0000-0000-0000-000000000040",createdAt: this.createdAt},
   ];
   
   
