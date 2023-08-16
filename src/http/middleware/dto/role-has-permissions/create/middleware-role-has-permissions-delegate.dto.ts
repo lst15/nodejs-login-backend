@@ -6,8 +6,8 @@ function MiddlewareRoleHasPermissionsDelegateDto(){
   return (req:Request,res:Response,next:NextFunction) => {
 
     const body_schema = z.object({
-      uuid_permission: z.string().nonempty().uuid(),
-      uuid_role: z.string().nonempty().uuid()
+      permission_name: z.string().nonempty(),
+      role_name: z.string().nonempty()
     })
 
     try {
